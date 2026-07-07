@@ -1,1 +1,2 @@
-A deep-learning framework that is designed to improve the speed of training and inference of neural networks.
+Engineered a from-scratch deep learning engine implementing reverse-mode automatic differentiation, purely functional computational
+graph evaluation steps, and custom multi-dimensional vector blocks using type-safe memory constraints.
