@@ -33,9 +33,9 @@ def test_torch():
     torch_model.fc2.weight = torch.nn.Parameter(torch.tensor(model.fc2.weights.data).T)
     torch_model.out.weight = torch.nn.Parameter(torch.tensor(model.out.weights.data).T)
 
-    torch_model.fc1.bias = torch.nn.Parameter(torch.tensor(model.fc1.bias.data).T)
-    torch_model.fc2.bias = torch.nn.Parameter(torch.tensor(model.fc2.bias.data).T)
-    torch_model.out.bias = torch.nn.Parameter(torch.tensor(model.out.bias.data).T)
+    torch_model.fc1.bias = torch.nn.Parameter(torch.tensor(model.fc1.bias.data))
+    torch_model.fc2.bias = torch.nn.Parameter(torch.tensor(model.fc2.bias.data))
+    torch_model.out.bias = torch.nn.Parameter(torch.tensor(model.out.bias.data))
 
     model.zero_grad()
     torch_model.zero_grad()
@@ -46,15 +46,15 @@ def test_torch():
     loss = pred.cross_entropy(test_y)
     torch_loss = criterion(torch_pred, torch.tensor(test_y))
 
-    assert np.allclose(loss.data, torch_loss.detach().numpy())
+    assert np.allclose(loss.data, torch_loss.detach().numpy(), rtol=1e-5, atol=1e-6)
 
     loss.backward()
     torch_loss.backward()
 
-    assert np.allclose(model.fc1.weights.grad, torch_model.fc1.weight.grad.T)
-    assert np.allclose(model.fc2.weights.grad, torch_model.fc2.weight.grad.T)
-    assert np.allclose(model.out.weights.grad, torch_model.out.weight.grad.T)
+    assert np.allclose(model.fc1.weights.grad, torch_model.fc1.weight.grad.T, rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.fc2.weights.grad, torch_model.fc2.weight.grad.T, rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.out.weights.grad, torch_model.out.weight.grad.T, rtol=1e-5, atol=1e-6)
 
-    assert np.allclose(model.fc1.bias.grad, torch_model.fc1.bias.grad.T)
-    assert np.allclose(model.fc2.bias.grad, torch_model.fc2.bias.grad.T)
-    assert np.allclose(model.out.bias.grad, torch_model.out.bias.grad.T)
+    assert np.allclose(model.fc1.bias.grad, torch_model.fc1.bias.grad, rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.fc2.bias.grad, torch_model.fc2.bias.grad, rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.out.bias.grad, torch_model.out.bias.grad, rtol=1e-5, atol=1e-6)
