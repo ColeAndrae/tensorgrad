@@ -1,11 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "tensorgrad"
-version = "0.0.1"
+version = "0.1.0"
+description = "A reverse-mode autograd engine for tensors, written from scratch in NumPy"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Cole Andrae" }]
 requires-python = ">=3.12"
 dependencies = ["numpy"]
 
 [project.optional-dependencies]
 test = ["pytest", "torch"]
+notebook = ["torch", "torchvision", "jupyter"]
+
+[project.urls]
+Repository = "https://github.com/ColeAndrae/tensorgrad2"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
