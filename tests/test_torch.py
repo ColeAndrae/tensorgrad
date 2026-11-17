@@ -21,6 +21,11 @@ class Torch_MLP(nn.Module):
         return x
 
 
+def torch_grad(param):
+    assert param.grad is not None
+    return param.grad.numpy()
+
+
 def test_torch():
 
     model = MLP()
@@ -51,10 +56,10 @@ def test_torch():
     loss.backward()
     torch_loss.backward()
 
-    assert np.allclose(model.fc1.weights.grad, torch_model.fc1.weight.grad.T, rtol=1e-5, atol=1e-6)
-    assert np.allclose(model.fc2.weights.grad, torch_model.fc2.weight.grad.T, rtol=1e-5, atol=1e-6)
-    assert np.allclose(model.out.weights.grad, torch_model.out.weight.grad.T, rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.fc1.weights.grad, torch_grad(torch_model.fc1.weight).T, rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.fc2.weights.grad, torch_grad(torch_model.fc2.weight).T, rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.out.weights.grad, torch_grad(torch_model.out.weight).T, rtol=1e-5, atol=1e-6)
 
-    assert np.allclose(model.fc1.bias.grad, torch_model.fc1.bias.grad, rtol=1e-5, atol=1e-6)
-    assert np.allclose(model.fc2.bias.grad, torch_model.fc2.bias.grad, rtol=1e-5, atol=1e-6)
-    assert np.allclose(model.out.bias.grad, torch_model.out.bias.grad, rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.fc1.bias.grad, torch_grad(torch_model.fc1.bias), rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.fc2.bias.grad, torch_grad(torch_model.fc2.bias), rtol=1e-5, atol=1e-6)
+    assert np.allclose(model.out.bias.grad, torch_grad(torch_model.out.bias), rtol=1e-5, atol=1e-6)
