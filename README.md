@@ -9,8 +9,6 @@ A reverse-mode autograd engine for tensors, written from scratch in NumPy. It tr
 
 ![tensorgrad: a from-scratch reverse-mode autograd engine and MLP for MNIST classification](tensorgrad_diagram.png)
 
-<sub>The figure shows the overall design. The numbers in it come from the first version of the project; this version uses ReLU, a 784-512-64-10 network and plain SGD (see [Training on MNIST](#training-on-mnist)).</sub>
-
 ## Results
 
 | | |
