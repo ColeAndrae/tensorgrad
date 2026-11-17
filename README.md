@@ -15,7 +15,7 @@ A reverse-mode autograd engine for tensors, written from scratch in NumPy. It tr
 
 | | |
 |---|---|
-| MNIST test accuracy | **97.8%** (9,781 / 10,000), [`notebooks/tensorgrad.ipynb`](notebooks/tensorgrad.ipynb) |
+| MNIST test accuracy | **97.8%** (9,781 / 10,000), [training notebook](https://github.com/ColeAndrae/tensorgrad/blob/a7f8d3b/notebooks/tensorgrad.ipynb) |
 | Agreement with PyTorch | loss and all six parameter gradients equal within `rtol=1e-5, atol=1e-6` ([`tests/test_torch.py`](tests/test_torch.py)) |
 | Gradient checks | every op checked against central finite differences in float64 ([`tests/test_engine.py`](tests/test_engine.py)) |
 
@@ -76,7 +76,7 @@ gradcheck(lambda x, W, b: (x @ W + b).relu().mean(), [x, W, b])
 
 ## Training on MNIST
 
-The notebook [`notebooks/tensorgrad.ipynb`](notebooks/tensorgrad.ipynb) trains `tensorgrad.nn.MLP`:
+The [training notebook](https://github.com/ColeAndrae/tensorgrad/blob/a7f8d3b/notebooks/tensorgrad.ipynb) (as of commit `a7f8d3b`) trains `tensorgrad.nn.MLP`:
 
 - **Network:** 784 → 512 → 64 → 10, ReLU between layers, weights scaled by `1/sqrt(fan_in)`. 435,402 parameters.
 - **Data:** pixels scaled to [0, 1], one-hot labels, batches of 100. The 60,000 training images are split 50,000 for training and 10,000 for validation.
@@ -104,7 +104,7 @@ tests/
   test_engine.py gradcheck on every op across broadcast shapes
   test_torch.py  MLP loss and gradients against a PyTorch twin
 notebooks/
-  tensorgrad.ipynb  MNIST training and evaluation
+  tensorgrad.ipynb  scratch notebook (the MNIST run is at commit a7f8d3b)
 ```
 
 ## Scope
