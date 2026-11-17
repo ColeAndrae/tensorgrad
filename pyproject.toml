@@ -17,7 +17,7 @@ test = ["pytest", "torch"]
 notebook = ["torch", "torchvision", "jupyter"]
 
 [project.urls]
-Repository = "https://github.com/ColeAndrae/tensorgrad2"
+Repository = "https://github.com/ColeAndrae/tensorgrad"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

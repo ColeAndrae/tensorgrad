@@ -1,6 +1,6 @@
 # tensorgrad
 
-[![tests](https://github.com/ColeAndrae/tensorgrad2/actions/workflows/tests.yml/badge.svg)](https://github.com/ColeAndrae/tensorgrad2/actions/workflows/tests.yml)
+[![tests](https://github.com/ColeAndrae/tensorgrad/actions/workflows/tests.yml/badge.svg)](https://github.com/ColeAndrae/tensorgrad/actions/workflows/tests.yml)
 ![python](https://img.shields.io/badge/python-3.12%2B-blue)
 ![numpy only](https://img.shields.io/badge/engine-numpy%20only-informational)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -22,8 +22,8 @@ A reverse-mode autograd engine for tensors, written from scratch in NumPy. It tr
 ## Quick start
 
 ```bash
-git clone https://github.com/ColeAndrae/tensorgrad2.git
-cd tensorgrad2
+git clone https://github.com/ColeAndrae/tensorgrad.git
+cd tensorgrad
 python -m venv venv && source venv/bin/activate
 pip install -e ".[test]"
 pytest
